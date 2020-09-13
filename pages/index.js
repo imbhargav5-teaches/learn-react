@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Job from '../components/Job'
 
@@ -22,14 +22,43 @@ const ParagraphArray = texts.map((textString) => (
 
 // props , state 
 
+// event listeners 
+// a state basics
+// props and state 
+// inputs
 
+
+// function Counter(){
+//   const [value , setValue] = useState(0);
+
+//   function handleIncrementButtonClick(){
+//     console.log("old value is",value);
+//     setValue(value + 1);
+//     console.log("new value is ",value);
+//   }
+
+//   function handleDecrementButtonClick(){
+//     console.log("old value is",value);
+//     setValue(value - 1);
+//     console.log("new value is ",value);
+//   }
+
+//   console.log("counter has rendered");
+
+//   return <div>
+//     <p>The current count value is {value}</p>
+//     <button onClick={handleIncrementButtonClick} className="border mx-4 p-2 my-4">Increment</button>
+//     <button onClick={handleDecrementButtonClick} className="border mx-4 p-2 my-4">Decrement</button>
+//   </div>
+// }
 
 
 function Home() {
+
   return (
     <>
-      <div className="m-auto text-center shadow bg-gray-100">
-        <p>Welcome to the jobs app</p>
+      <div className="m-auto text-center">
+          
         </div>  
     </>
   );
