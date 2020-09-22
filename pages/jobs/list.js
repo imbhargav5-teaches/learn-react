@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+import Dropdown from '../../components/Dropdown';
 import Job from '../../components/Job'
 
 
@@ -71,6 +72,7 @@ const data = [{
   }
 
 
+
   function TabButton({tabName, setSelectedTab, selectedTab}){
     let className = "button border m-4 p-4 shadown"
     const isSelected = selectedTab === tabName;
@@ -134,6 +136,7 @@ function JobList(props) {
     const onlyFeaturedCheckboxState = useCheckboxState();    
     const [selectedTab, setSelectedTab] = useState("All");
 
+
     const filteredJobs = data.filter(job => {
       if((selectedTab!=="All" ? job.tags.includes(selectedTab) : true) && job.title.includes(titleSearchInputState.value) && (onlyFeaturedCheckboxState.value ? job.featured : true)){
         return true;
@@ -144,18 +147,45 @@ function JobList(props) {
 
     useDocumentTitle(titleSearchInputState.value, [titleSearchInputState.value])
 
-    useEffect(() => {
+    useEffect(() => {      
       console.log("tab changed to " + selectedTab)
     }, [selectedTab])
 
     useEffect(() => {
       console.log("onlyFeaturedCheckboxState changed to " + onlyFeaturedCheckboxState.value)
     }, [onlyFeaturedCheckboxState.value])
-    
+
+  
+    const ref = useRef();
+
+    // useEffect(() => {
+    //   function handleKeyDown(event){
+    //     if(event.metaKey && event.code === "KeyH"){
+    //       console.log("clicked cmd + h")
+    //       if(ref.current){
+    //         ref.current.focus();
+    //       }
+    //       return false;
+    //     }
+    //   };
+    //   document.addEventListener("keydown", handleKeyDown)
+    //   return () => {
+    //     document.removeEventListener("keydown",handleKeyDown);
+    //   }
+    // },[]);
+
+
     return (
       <>
-        <input {...titleSearchInputState} placeholder="search title"  id="searchInput" className="border"/>
+        <input {...titleSearchInputState} ref={ref} placeholder="search title"  id="searchInput" className="border"/>
         <input type="checkbox" {...onlyFeaturedCheckboxState} />
+        <Dropdown list={[
+          "All",
+          "React",
+          "Marketing",
+          "Angular",
+          "Vue",
+        ]} initialValue="All" onChange={console.log} />
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab}>
             <JobsListDisplay list={filteredJobs} />
         </Tabs>
