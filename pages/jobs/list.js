@@ -74,10 +74,10 @@ const data = [{
 
 
   function TabButton({tabName, setSelectedTab, selectedTab}){
-    let className = "button border m-4 p-4 shadown"
+    let className = "button border mr-1 mb-1 px-4 py-2 rounded"
     const isSelected = selectedTab === tabName;
     if(isSelected){
-      className = className + " " + "text-red-400"
+      className = className + " " + "bg-blue-400 text-white"
     }
     return <button className={className} onClick={(event) => setSelectedTab(tabName)}>{tabName}</button>
   }
@@ -85,8 +85,8 @@ const data = [{
 function Tabs(props){
   const {setSelectedTab, selectedTab, children} = props;
 
-  return <div>    
-    <div className="tabs-list">
+  return <div className="">    
+    <div className="tabs-list pb-2">
       <TabButton setSelectedTab={setSelectedTab} selectedTab={selectedTab} tabName="All"/>
       <TabButton setSelectedTab={setSelectedTab} selectedTab={selectedTab} tabName="React"/>
       <TabButton setSelectedTab={setSelectedTab} selectedTab={selectedTab} tabName="Marketing"/>
@@ -177,17 +177,26 @@ function JobList(props) {
 
     return (
       <>
-        <input {...titleSearchInputState} ref={ref} placeholder="search title"  id="searchInput" className="border"/>
-        <input type="checkbox" {...onlyFeaturedCheckboxState} />
-        <Dropdown list={[
+        <div className="grid job-search-form">
+          <input {...titleSearchInputState} ref={ref} placeholder="search title"  id="searchInput" className="border mr-4 px-4 py-1"/>
+          <div className="flex items-center ">
+            <label>Featured</label>
+            <input className="mx-2" type="checkbox" {...onlyFeaturedCheckboxState} />
+          </div>
+          <Dropdown list={[
           "All",
           "React",
           "Marketing",
           "Angular",
           "Vue",
         ]} initialValue="All" onChange={console.log} />
+        </div>        
+        <hr className="mt-8 border-transparent"/>
+        <h1 className="heading">Jobs</h1>              
         <Tabs selectedTab={selectedTab} setSelectedTab={setSelectedTab}>
-            <JobsListDisplay list={filteredJobs} />
+            <div className="divide-y divide-gray-400">
+              <JobsListDisplay list={filteredJobs} />
+            </div>
         </Tabs>
         </>
     );

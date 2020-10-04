@@ -1,0 +1,27 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.nav-link{
+    @apply text-gray-900 mr-4 px-4 py-2 bg-gray-200 rounded;
+}
+.nav-link:hover{
+    @apply text-blue-600;
+}
+
+.job{
+    @apply pr-4 py-2 max-w-xl;
+}
+
+.heading{
+    @apply mb-8 text-4xl;
+}
+
+.job-search-form{
+    grid-template-columns: 1fr auto auto;
+}
+.dropdown-btn{
+    min-width: 160px;
+}

@@ -5,13 +5,13 @@ import Link from 'next/link'
 function Navbar(){
     return <div className="text-sm my-4">
         <Link href="/">
-        <a className="text-gray-900 mr-4" >Home</a>        
+        <a className="nav-link hover:text-blue-400" >Home</a>        
         </Link>
         <Link href="/about">
-            <a className="text-gray-900 mr-4">About</a>
+            <a className="nav-link hover:text-blue-400">About</a>
         </Link>
         <Link href="/jobs/list">
-            <a className="text-gray-900 mr-4">Jobs</a>
+            <a className="nav-link hover:text-blue-400">Jobs</a>
         </Link>        
     </div>
 }
@@ -19,8 +19,8 @@ function Navbar(){
 function Layout(props) {
   const { children } = props;
   return (
-    <div className="layout max-w-xl mx-auto">
-      <div className="text-2xl"> <Navbar/> </div>
+    <div className="layout max-w-2xl mx-auto">
+      <div className="text-2xl px-8"> <Navbar/> </div>
       <div className="p-8 my-4">{children}</div>
     </div>
   );

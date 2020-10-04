@@ -17,9 +17,9 @@ function Job(props) {
     }
 
     return (
-        <div onClick={enableShowDescription} className="border px-16 mt-8 max-w-xl">
-            <h1>{title}</h1>
-            {showDescription ? <p className="text-xs"> {description}</p> : null}
+        <div onClick={enableShowDescription} className="job leading-5">
+            <h1 className="mb-2">{title}</h1>
+            {showDescription ? <p className="text-xs text-gray-700"> {description}</p> : null}
         </div>
     );
 }
