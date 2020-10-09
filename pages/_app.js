@@ -1,14 +1,11 @@
 import Head from "next/head";
 import Layout from '../components/Layout'
+import "../styles/index.css"
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <link
-          href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-          rel="stylesheet"
-        />
+      <Head>        
       </Head>
       <Layout>
       <Component {...pageProps} />
